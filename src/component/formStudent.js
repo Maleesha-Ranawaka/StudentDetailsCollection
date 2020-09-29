@@ -4,6 +4,7 @@ import DateTimePicker from './dateTimePicker';
 import RoleSelector from './roleSelector';
 import AutoSuggestion from './autosuggestion';
 //import './formStudent.css';
+import API from "../api/cityapi"
 
 class StudentForm extends Component {
   state = { 
@@ -17,8 +18,23 @@ class StudentForm extends Component {
     dateofBirth: "",
     residingCity: "",
     residingDistrict: "",
-
+    citylist: [],
   }
+
+  componentDidMount() {
+    API
+      .get(
+        `citylist/city`
+      )
+      .then(({ data }) => {
+        //console.log(data);
+        this.setState({citylist: data.citylist2})
+        //console.log(this.state.citylist);
+      });
+
+
+  };
+
 
   rationButton = (event) => {
     console.log(event.target.id);
@@ -106,7 +122,7 @@ class StudentForm extends Component {
                 <Form.Group controlId="formCity">
                   <small className="form-text text-muted">Residing City</small>
                   {/* <Form.Control type="text" placeholder="" /> */}
-                  <AutoSuggestion />
+                  <AutoSuggestion listofcity={this.state.citylist} />
                 </Form.Group>
               </Col>
             </Row>
