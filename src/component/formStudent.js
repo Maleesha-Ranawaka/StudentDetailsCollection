@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import DateTimePicker from './dateTimePicker';
 import RoleSelector from './roleSelector';
+import AutoSuggestion from './autosuggestion';
 //import './formStudent.css';
 
 class StudentForm extends Component {
@@ -96,15 +97,16 @@ class StudentForm extends Component {
             
             <Row>
               <Col>
-                <Form.Group controlId="formEmail">
+                <Form.Group controlId="formDistrict">
                   <small className="form-text text-muted">Residing District</small>
                   <Form.Control type="text" placeholder="" />
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="formEmail">
+                <Form.Group controlId="formCity">
                   <small className="form-text text-muted">Residing City</small>
-                  <Form.Control type="text" placeholder="" />
+                  {/* <Form.Control type="text" placeholder="" /> */}
+                  <AutoSuggestion />
                 </Form.Group>
               </Col>
             </Row>
